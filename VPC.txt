@@ -1,0 +1,67 @@
+1.Create VPC with 10.0.0.0/16
+2.Create two Subnet(Public and private)
+    ->attach created VPC
+    ->give name
+    ->availabilty zones does not matter
+    ->give subnet range
+    ->create subnet
+3.Create Internet Gateway
+    ->once created it will be in detached mode
+    ->Goto Actions -> Attach to VPC
+    ->select our vpc and click attach
+4.Create Route Table to connect internet Gateway to subnet
+    ->Give name
+    ->attach with our VPC
+5.We need to associate public Route Table and Public subnet to establish connection between them
+    ->select public Route Table that we created
+    ->under subnet assocaitions
+    ->Explicit subnet assocaitions->Edit subnet associations
+    ->select public route Table
+    ->save assocaitions
+    ->do the same for private route Table
+6.Connecting Public Route Table with Internet Gateway
+    ->select public Route Table
+    ->Routes-> Edit routes
+    ->add route -> Destination - 0.0.0.0/0 and Target - Internet Gateway->select created Gateway
+    ->save changes
+7.Create Security groups(public and private)
+    ->Go to security group
+    ->Give name
+    ->select our VPC
+    ->inbound rules ->SSH-22port->RDP-3389port->HTTP-80port
+    ->click create security group
+    ->copy the security group ID
+    ->create private security group
+    ->select our VPC
+    ->inbound rules -> All TCP ->paste the public security group id in source
+8.Create webserver in public and DB in private
+    ->Launch Ec2 instance for both
+    ->select our VPC
+    ->Enable Auto-assign public IP
+    ->select public security group
+    ->Launch
+    ->Launch EC2 for DB with private
+    ->Diable Auto-assign public IP
+    ->login to public server
+    ->after logged in with webserver goto RDC and connect the DB server(Private)
+    ->webserver with internet connection and DB without internet
+9.Create NAT Gateway for providing internet to intranet
+    ->Create NAT Gateway
+    ->give name
+    ->choose public subnet
+    ->Allocate Elastic IP
+    ->click create NAT Gateway to complete the creation process
+    ->Once NAT Gateway turned to available
+10.Connecting NAT with Private Route Table
+    ->Goto Route Table
+    ->Select private Route Table
+    ->under Routes select edit routes
+    ->Add route ->Destination - 0.0.0.0/0 and target - NAT gateway
+    ->save changes
+
+
+Deleting VPC
+1.Delete NAT gateway
+2.Terminate both the servers
+3.Delete VPC
+4.Release Elastic IP
