@@ -1,0 +1,28 @@
+Topics
+
+1.Elastic Ip
+2.Volume
+3.Snapshots
+4.AMI - Amazon Machine Image
+
+ELASTIC IP
+-We can buy upto Max 5 EIP per account
+
+Volume
+-Add additional drive
+-Increase the size of the volume
+
+-create the volume in EBS
+
+Windows
+-inside windows server 
+  ->Disk Management
+  ->unallocated Disk
+  ->Right Click ->Online
+  ->Right Click ->initialize Disk
+  ->Right Click on unallocated
+  ->New Simple Volume
+  ->increase or decrease the size
+  ->Select Drive name
+  ->Select NTFS
+  ->Click Done
