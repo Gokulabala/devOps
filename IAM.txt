@@ -65,7 +65,7 @@ Goto IAM
     ->Goto MFA
     ->Enable MFA
     ->give name
-    ->follow on screen steps
+    ->follow on screen steps    
     
 
     

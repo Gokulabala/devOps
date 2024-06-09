@@ -1,0 +1,58 @@
+1.SQS - Simple Queue service
+    ->First launched service in 2006
+    ->Synchronous ->One to one
+    ->send and receiver both should be active
+    ->DLQ-Dead Letter Queue->Message can wait till 14 days
+    ->Goto SQS
+    ->create Queue
+    ->Select Type as standard
+    ->give name
+    ->Configuration
+    ->Visibility timeout ->how long message will stay in the Queue
+    ->Delivery delay ->message will be delivered after this delay time
+    ->Receive message wait time ->0 seconds
+    ->Message retention period -> how long message will wait in the DLQ
+    ->Maximum message size - size of the message
+    ->Encryption -> always enable for data Security
+    ->Access Policy-> select Basic
+    ->Click create Queue
+    ->Select the created Queue
+    ->select send and receive messages
+    ->in send message ->Message body ->type the message and click send message
+    ->in receive message -> select poll messages to view the received messages
+
+2.SNS - Simple Notification service
+    ->Asynchronous behaviour ->one to many
+    ->only sender is active
+    ->FIFO - First in First Out ->delivered in Queue
+    ->Standard - Message will be send in random manner
+    ->Topic -> refered to team
+    ->subscriber->end receiver
+    ->Message will be sent from Topic to subscribers
+    ->Goto SNS
+    ->Create Topic
+    ->Select Type as Standard
+    ->GIve name
+    ->click create topic
+    ->Go inside the Topic and Click create Subscription
+    ->Select protocol as per requirement. If SMS is selected add phone number and verify
+    ->select thepublish message from topic and give message details and click publish message
+    ->message will be received to the subscriber
+
+3.Cloud Watch
+    ->Monitoring Tool
+    ->To track EC2 - CPU, Memory, Network, disk, EBS read/write
+    ->To track services like EC2, S3, SNS, SQS, assign
+    ->Metrics will be tracked
+    ->Create one Ec2 instance and copy the instance Id and connect the instance 
+    ->Goto CloudWatch
+    ->Select Metrics ->All Metrics
+    ->Select EC2->paste the instance ID -> choose CPUUtilization
+    ->Select Graphed Metrics
+    ->Select Alarm from Actions Tabs
+    ->Conditions -> Threshold Type ->static->give value as per the requirement
+    ->Click Next
+    ->In Notification ->in Alarm->Select an existing SNS topic->choose the required Topic->click Next
+    ->Give Alarm Name
+    ->Give Alarm description as per company policy and click next
+    ->Click create ALarm 
