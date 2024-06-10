@@ -1,0 +1,37 @@
+1.Lambda
+    ->Serverless
+    ->PASS
+    ->Maximum runnable script 15 mins
+    ->Event driven
+    ->To start, stop or schedule the service
+    ->Template will be available, we have to do necessary changes as per the requirement
+    ->Create Function
+    ->Select Author from Scratch / Use a blueprint 
+    ->give name
+    ->Select appropraite run time like python 3.9
+    ->Paralley create Role to communicate from Lambda to Ec2
+    ->Change Execution Role to our created role
+    ->Click Create Function
+    ->Goto Test and configure test Event
+    ->Create dummy test environment
+    ->Copy the script with all the changes in lambda_function body
+    ->Click Deploy
+    ->Click Test and you can see the response and function logs
+
+2.EFS
+    ->Elastic File System
+    ->NFS->Network File System
+    ->Storage service
+    ->Create 2 EC2 instance with NFS as security group
+    ->login to both instances
+    ->create directory with two separate names in each Ec2
+    ->Goto EFS
+    ->Create File System
+    ->Click Customize
+    ->Give name
+    ->select the below polices as per requirement
+    ->Goto Network Tab and give NFS security group to all the availability zone
+    ->Click create
+    ->Open the created file system and give attach copy the command to mount EFS 
+    ->in the EC2 instance paste the mount NFS command and in the end change the directory as created in each EC2 
+    ->create one sample file in one instance and check the other instance it will also have the same file
